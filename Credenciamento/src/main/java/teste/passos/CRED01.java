@@ -2,6 +2,8 @@ package teste.passos;
 
 import static org.junit.Assert.fail;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,7 +21,7 @@ import cucumber.api.java.pt.Entao;
 
 public class CRED01 extends Config {
 
-	// Acessar o browser e preencher a url do sistema e acessar o sistema
+// Acessar o browser e preencher a url do sistema e acessar o sistema
 
 	@Dado("^o browser \"(.*?)\" inserir a url \"([^\"]*)\" da aplicação$")
 	public void acessarAplicacao(String browser, String url) throws Exception {

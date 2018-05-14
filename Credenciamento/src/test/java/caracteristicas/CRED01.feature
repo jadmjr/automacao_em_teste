@@ -14,7 +14,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | cnpj             |
-      | "14691178000130" |
+      | "30917141000134" |
 
   Esquema do Cenario: Preencher todos os campos da aba Empresa e salvar
     Dado a razão Social:<Razão Social>
@@ -50,3 +50,46 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
     Exemplos: 
       | nomeSocio       | cpf           | porcentagem | dtNascimento | telefoneSocio | email                 |
       | "José Saramago" | "10653063695" | "100"       | "12/06/1990" | "3432177247"  | "jose.sara@gmail.com" |
+
+  Esquema do Cenario: Preencher Faturamento
+    Dado o cnae <cnae>
+    E o faturamento mensal <fatMensal>
+    E a previsao de venda <ItemPrevVenda>
+    Entao confirmar habilitacao menu de planos
+
+    Exemplos: 
+      | cnae                                                                         | fatMensal | ItemPrevVenda |
+      | "5611202 - Bares e outros estabelecimentos especializados em servir bebidas" | "10000"   | "1"           |
+
+  Esquema do Cenario: Escolher Solução
+    Dado adicionar solução POS com fio <qtdComFio>
+    Entao confirmar inclusao POS com fio no carrinho <qtdComFio>
+    E adicionar solução POS sem fio	<qtdSemFio>
+    Entao confirmar inclusao POS sem fio no carrinho <qtdSemFio>
+    E adicionar solução POS mobile	<qtdMobile>
+    Entao confirmar inclusao POS mobile no carrinho <qtdMobile>
+
+    Exemplos: 
+      | qtdComFio | qtdSemFio | qtdMobile |
+      | "10"      | "2"      | "5"       |
+
+  Esquema do Cenario: Preencher dados bancarios
+    Dado a bandeira <ItemBandeira>
+    E o banco <banco>
+    E a agencia <agencia>
+    E a conta <conta>
+    Entao clicar no botao para adicionar
+
+    Exemplos: 
+      | ItemBandeira | banco                           | agencia | conta    |
+      | "0"          | "104 - CAIXA ECONOMICA FEDERAL" | "1065"  | "233939" |
+
+  Esquema do Cenario: Preencher dados complementares
+    Dado email do agente credenciador <emailCred>
+    E nome da pessoa que recebera o esquipamento <nomeRec>
+    E as observacoes <obervacoes>
+    Entao enviar proposta
+
+    Exemplos: 
+      | emailCred          | nomeRec       | obervacoes |
+      | "jadmjr@gmail.com" | "JOSE CUERVO" | "ROBO"     |
