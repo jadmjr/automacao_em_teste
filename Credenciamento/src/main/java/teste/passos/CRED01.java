@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,7 +22,7 @@ import cucumber.api.java.pt.Entao;
 
 public class CRED01 extends Config {
 
-// Acessar o browser e preencher a url do sistema e acessar o sistema
+	// Acessar o browser e preencher a url do sistema e acessar o sistema
 
 	@Dado("^o browser \"(.*?)\" inserir a url \"([^\"]*)\" da aplicação$")
 	public void acessarAplicacao(String browser, String url) throws Exception {
@@ -110,13 +111,14 @@ public class CRED01 extends Config {
 			Thread.sleep(3000);
 			// FORÇANDO REMOCAO DO FADE
 
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			WebElement fade = driver.findElement(By.xpath(xpathFade));
+			try {
+				JavascriptExecutor js = (JavascriptExecutor) driver;
+				WebElement fade = driver.findElement(By.xpath("aaaaa"));
+				js.executeScript("$('.modal-backdrop').remove()", fade);
 
-			js.executeScript(
-					"document.getElementsByClassName('modal-backdrop fade show').setAttribute('class', 'modal-backdrop fade hide')",
-					fade);
-			System.out.println("removeu fade");
+			} catch (NoSuchElementException e) {
+				//IGNORANDO EXPEPTION
+			}
 
 			// ESPERANDO
 			WebDriverWait wait = new WebDriverWait(driver, 10);

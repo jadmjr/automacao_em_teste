@@ -14,7 +14,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | cnpj             |
-      | "30917141000134" |
+      | "18016477000120" |
 
   Esquema do Cenario: Preencher todos os campos da aba Empresa e salvar
     Dado a razão Social:<Razão Social>
