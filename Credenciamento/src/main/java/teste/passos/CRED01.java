@@ -104,7 +104,7 @@ public class CRED01 extends Config {
 	@E("confirmar a inserção de um novo cadastro$")
 	public void confirmarNovoCadastro() throws Exception{
 		try {
-			WebElement btnConfirmar = (new WebDriverWait(driver, 2)).until(
+			WebElement btnConfirmar = (new WebDriverWait(driver,2)).until(
 			ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@id='btAbreProposta'])[2]")));
 			btnConfirmar.click();
 
