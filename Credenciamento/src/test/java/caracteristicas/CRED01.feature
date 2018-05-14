@@ -82,7 +82,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | ItemBandeira | banco                           | agencia | conta    |
-      | "0"          | "104 - CAIXA ECONOMICA FEDERAL" | "1065"  | "233939" |
+      | "3"          | "104 - CAIXA ECONOMICA FEDERAL" | "1065"  | "233939" |
 
   Esquema do Cenario: Preencher dados complementares
     Dado email do agente credenciador <emailCred>
