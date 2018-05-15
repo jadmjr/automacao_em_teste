@@ -14,7 +14,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | cnpj             |
-      | "18016477000120" |
+      | "13641920000130" |
 
   Esquema do Cenario: Preencher todos os campos da aba Empresa e salvar
     Dado a razão Social:<Razão Social>
@@ -71,7 +71,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | qtdComFio | qtdSemFio | qtdMobile |
-      | "10"      | "2"      | "5"       |
+      | "10"      | "2"       | "5"       |
 
   Esquema do Cenario: Preencher dados bancarios
     Dado a bandeira <ItemBandeira>
@@ -82,7 +82,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | ItemBandeira | banco                           | agencia | conta    |
-      | "0"          | "104 - CAIXA ECONOMICA FEDERAL" | "1065"  | "233939" |
+      | "VISA"       | "104 - CAIXA ECONOMICA FEDERAL" | "1065"  | "233939" |
 
   Esquema do Cenario: Preencher dados complementares
     Dado email do agente credenciador <emailCred>
