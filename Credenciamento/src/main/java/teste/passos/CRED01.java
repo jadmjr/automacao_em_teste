@@ -574,8 +574,7 @@ public class CRED01 extends Config {
 			// CONFIRMANDO ENVIO
 			WebDriverWait wait = new WebDriverWait(driver, 10);
 			WebElement alert = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(XpathAlerta)));
-
-			System.out.println("JMJR - " + alert.getText());
+			
 			Assert.assertThat(alert.getText(), CoreMatchers.containsString(textoMsgSucesso));
 
 		} catch (Exception e) {
