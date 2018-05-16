@@ -10,7 +10,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | cnpj             |
-      | "56649913000198" |
+      | "83145281000106" |
 
   Esquema do Cenario: Preencher todos os campos da aba Empresa e salvar
     Dado a razão Social:<Razão Social>
@@ -54,8 +54,8 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
     Entao confirmar habilitacao menu de planos
 
     Exemplos: 
-      | cnae                                                                         | fatMensal | ItemPrevVenda |
-      | "5611202 - Bares e outros estabelecimentos especializados em servir bebidas" | "10000"   | "1"           |
+      | cnae                                                                          | fatMensal | ItemPrevVenda |
+      | "5611202 - Bares e outros estabelecimentos especializados em servir bebidas"" | "10000"   | "1"           |
 
   Esquema do Cenario: Escolher Solução
     Dado adicionar solução POS com fio <qtdComFio>

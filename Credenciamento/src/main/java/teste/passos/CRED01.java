@@ -1,16 +1,16 @@
 package teste.passos;
 
 import static org.junit.Assert.fail;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import configuracao.Config;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.E;
@@ -328,10 +328,49 @@ public class CRED01 extends Config {
 			WebElement select = driver.findElement(By.id(idFormPrevisaoVenda));
 			new org.openqa.selenium.support.ui.Select(select).selectByIndex(Integer.parseInt(ItemPrevVenda));
 
+			// JMJR - PREENCHENDO PATS
+			try {
+				WebDriverWait wait = new WebDriverWait(driver, 10);
+				wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(idCheckTipoEc)));
+				preencherPatRefeicao();
+				try {
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(idCheckTipoEc2)));
+					preencherPatAlimentacao();
+				} catch (Exception e) {
+					// NOTHING TO DO
+					System.out.println("jmjr - " + e);
+				}
+
+			} catch (Exception e) {
+				// NOTHING TO DO
+				System.out.println("jmjr - " + e);
+			}
+
 		} catch (Exception e) {
 			fail();
 			driver.close();
 		}
+	}
+
+	public void preencherPatRefeicao() {
+
+		driver.findElement(By.id(idCheckTipoEc)).click();
+		driver.findElement(By.id(idCheckPeriodo)).click();
+		driver.findElement(By.id(idCheckFuncionamento)).click();
+		driver.findElement(By.xpath(xpathNumeroRefDia)).sendKeys("10");
+		driver.findElement(By.xpath(xpathAreaAtendimento)).sendKeys("10");
+		driver.findElement(By.xpath(xpathNumeroMesas)).sendKeys("10");
+		driver.findElement(By.xpath(xpathNumeroAssentos)).sendKeys("10");
+
+	}
+
+	public void preencherPatAlimentacao() {
+		driver.findElement(By.id(idCheckTipoEc2)).click();
+		driver.findElement(By.id(idCheckPeriodo2)).click();
+		driver.findElement(By.id(idCheckFuncionamento2)).click();
+		driver.findElement(By.xpath(xpathAreaLoja)).sendKeys("10");
+		driver.findElement(By.xpath(xpathQtdCheckOut)).sendKeys("10");
+
 	}
 
 	@Entao("^confirmar habilitacao menu de planos$")
@@ -542,6 +581,7 @@ public class CRED01 extends Config {
 			Assert.assertThat(alert.getText(), CoreMatchers.containsString(textoMsgSucesso));
 
 		} catch (Exception e) {
+			System.out.println("jmjr -errro"+e.getMessage());
 			fail();
 			driver.close();
 		}

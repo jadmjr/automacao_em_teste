@@ -7,24 +7,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Config {
-
+	// JMJR
 	public static WebDriver driver;
 
 	public String txtAplicao = null;
 	public String txtCadastro = null;
-	
-	
+
 	// Acesso para o browser Chrome
 	public String pathChromeServer = "resources\\chromedriver\\chromedriver.exe";
-	
-	//Variáveis dos caso de teste CRED00
+
+	// Variáveis dos caso de teste CRED00
 	public String idCampoUsuario = "username";
 	public String idCampoSenha = "password";
 	public String xpathBtnAcessar = "/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div/div[1]/div[2]/div/form/input";
 
-	
-	//Variáveis dos caso de teste CRED01
-	
+	// Variáveis dos caso de teste CRED01
+
 	public static String idBtnProposta = "li_icon_menu_proposta";
 	public static String idBtnLupa = "btPesquisarPropostaCnpj";
 	public static String idCampoCNPJ = "inlineFormInputGroup";
@@ -57,6 +55,22 @@ public class Config {
 	public static String idCampoFaturamento = "valorFaturamento";
 	public static String idFormPrevisaoVenda = "exampleFormControlSelect1";
 
+	// PREENCHIMENTO DO PAT REFEICAO - JMJR
+	public static String idCheckTipoEc = "checkrestaurante";
+	public static String idCheckPeriodo = "sabado";
+	public static String idCheckFuncionamento = "check24";
+	public static String xpathNumeroRefDia = "//*[@id=\"CorpoProposta\"]/div[3]/div[2]/form/fieldset/div/div[4]/div[1]/input";
+	public static String xpathAreaAtendimento = "//*[@id=\"CorpoProposta\"]/div[3]/div[2]/form/fieldset/div/div[4]/div[2]/input";
+	public static String xpathNumeroMesas = "//*[@id=\"CorpoProposta\"]/div[3]/div[2]/form/fieldset/div/div[4]/div[3]/input";
+	public static String xpathNumeroAssentos = "//*[@id=\"CorpoProposta\"]/div[3]/div[2]/form/fieldset/div/div[4]/div[4]/input";
+
+	// PREENCHIMENTO DO PAT ALIMENTACAO - JMJR
+	public static String idCheckTipoEc2 = "acheckaçougue";
+	public static String idCheckPeriodo2 = "asegunda";
+	public static String idCheckFuncionamento2 = "acheck24";
+	public static String xpathAreaLoja = "//*[@id=\"CorpoProposta\"]/div[3]/div[4]/form/fieldset/div/div[4]/div[1]/input";
+	public static String xpathQtdCheckOut = "//*[@id=\"CorpoProposta\"]/div[3]/div[4]/form/fieldset/div/div[4]/div[2]/input";
+	//
 	public static String xpathClassePlanos = "//*[@id=\"pills-padrao\"]/div/div/div[2]/div[1]/isnotcontratado/div";
 
 	public static String xpathQtdPOSComFio = "//*[@id=\"pills-gprs-cf\"]/div/div[4]/input";
@@ -88,23 +102,23 @@ public class Config {
 	public static String XpathAlerta = "//*[@id=\"CorpoProposta\"]/div[10]/div[2]/div[2]/p";
 
 	public static String textoMsgSucesso = "sucesso";
-	
-	//Metodo login
-	
-	public static String GeralUrl 	= "http://credenciamentowebdsv.tripag.com.br/#!/";
-	public static String Geraluser 	= "ccreis";
+
+	// Metodo login
+
+	public static String GeralUrl = "http://credenciamentowebdsv.tripag.com.br/#!/";
+	public static String Geraluser = "ccreis";
 	public static String Geralsenha = "teste";
-	
-	public  void login() throws InterruptedException {
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("start-maximized");
-			System.setProperty("webdriver.chrome.driver", pathChromeServer);
-			driver = new ChromeDriver(options);
-			driver.get(GeralUrl);			
-			Thread.sleep(2000);
-			driver.findElement(By.id(idCampoUsuario)).sendKeys(Geraluser);
-			driver.findElement(By.id(idCampoSenha)).sendKeys(Geralsenha);
-			driver.findElement(By.xpath(xpathBtnAcessar)).click();
+
+	public void login() throws InterruptedException {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("start-maximized");
+		System.setProperty("webdriver.chrome.driver", pathChromeServer);
+		driver = new ChromeDriver(options);
+		driver.get(GeralUrl);
+		Thread.sleep(2000);
+		driver.findElement(By.id(idCampoUsuario)).sendKeys(Geraluser);
+		driver.findElement(By.id(idCampoSenha)).sendKeys(Geralsenha);
+		driver.findElement(By.xpath(xpathBtnAcessar)).click();
 	}
 
 }
