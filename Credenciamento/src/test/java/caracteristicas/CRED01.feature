@@ -6,6 +6,16 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
     Dado o browser "chrome" inserir a url "http://credenciamentowebdsv.tripag.com.br" da aplicação
     Entao confirmada a abertura da pagina atraves do titulo "Credenciamento WEB"
 
+  Esquema do Cenario: Logar no portal Credenciamento
+    Dado o usuário <usuario>
+    E a senha <senha>
+    E clicar no botao acesssar
+    Entao Clicar no botao para iniciar uma nova proposta
+
+    Exemplos: 
+      | usuario  | senha   |
+      | "ccreis" | "teste" |
+
   Esquema do Cenario: Inserir um cnpj válido e não cadastrado no sistema e escolher a opção de um novo cadastro
     Dado preencher cnpj<cnpj>
     E clicar no botão lupa
@@ -14,7 +24,7 @@ Funcionalidade: Acessar a aplicação e realizar o cadastro de uma nova proposta
 
     Exemplos: 
       | cnpj             |
-      | "13641920000130" |
+      | "73913997000144" |
 
   Esquema do Cenario: Preencher todos os campos da aba Empresa e salvar
     Dado a razão Social:<Razão Social>

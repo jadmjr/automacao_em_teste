@@ -8,6 +8,10 @@ public class Config {
 
 	public String txtAplicao = null;
 	public String txtCadastro = null;
+	
+	public String idCampoUsuario = "username";
+	public String idCampoSenha = "password";
+	public String xpathBtnAcessar = "/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div/div[1]/div[2]/div/form/input";
 
 	// Acesso para o browser Chrome
 	public String pathChromeServer = "resources\\chromedriver\\chromedriver.exe";
