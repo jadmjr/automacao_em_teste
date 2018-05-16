@@ -1,6 +1,10 @@
 package configuracao;
 
+import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Config {
 
@@ -9,13 +13,19 @@ public class Config {
 	public String txtAplicao = null;
 	public String txtCadastro = null;
 	
+	
+	// Acesso para o browser Chrome
+	public String pathChromeServer = "resources\\chromedriver\\chromedriver.exe";
+	
+	//Variáveis dos caso de teste CRED00
 	public String idCampoUsuario = "username";
 	public String idCampoSenha = "password";
 	public String xpathBtnAcessar = "/html/body/div[1]/div[2]/div[2]/div[1]/div[1]/div/div[1]/div[2]/div/form/input";
 
-	// Acesso para o browser Chrome
-	public String pathChromeServer = "resources\\chromedriver\\chromedriver.exe";
-
+	
+	//Variáveis dos caso de teste CRED01
+	
+	public static String idBtnProposta = "li_icon_menu_proposta";
 	public static String idBtnLupa = "btPesquisarPropostaCnpj";
 	public static String idCampoCNPJ = "inlineFormInputGroup";
 	public static String idBtnConfirmaCad = "(//button[@id='btAbreProposta'])[2]";
@@ -78,5 +88,23 @@ public class Config {
 	public static String XpathAlerta = "//*[@id=\"CorpoProposta\"]/div[10]/div[2]/div[2]/p";
 
 	public static String textoMsgSucesso = "sucesso";
+	
+	//Metodo login
+	
+	public static String GeralUrl 	= "http://credenciamentowebdsv.tripag.com.br/#!/";
+	public static String Geraluser 	= "ccreis";
+	public static String Geralsenha = "teste";
+	
+	public  void login() throws InterruptedException {
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("start-maximized");
+			System.setProperty("webdriver.chrome.driver", pathChromeServer);
+			driver = new ChromeDriver(options);
+			driver.get(GeralUrl);			
+			Thread.sleep(2000);
+			driver.findElement(By.id(idCampoUsuario)).sendKeys(Geraluser);
+			driver.findElement(By.id(idCampoSenha)).sendKeys(Geralsenha);
+			driver.findElement(By.xpath(xpathBtnAcessar)).click();
+	}
 
 }

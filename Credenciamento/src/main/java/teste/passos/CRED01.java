@@ -18,55 +18,18 @@ import cucumber.api.java.pt.Entao;
 
 public class CRED01 extends Config {
 
-	// Acessar o browser e preencher a url do sistema e acessar o sistema
-
-	@Dado("^o browser \"(.*?)\" inserir a url \"([^\"]*)\" da aplicação$")
-	public void acessarAplicacao(String browser, String url) throws Exception {
-		try {
-			if (browser.equals("chrome")) {
-
-				// Configurando opções do navegador
-				ChromeOptions options = new ChromeOptions();
-				options.addArguments("start-maximized");
-				System.setProperty("webdriver.chrome.driver", pathChromeServer);
-
-				// Inicializando Nav.
-				driver = new ChromeDriver(options);
-				driver.get(url);
-				//
-
-			}
-		} catch (Exception e) {
-			System.out.println("Erro - " + e.getMessage());
-			fail();
-			driver.close();
-		}
-	}
-
-	@Entao("^confirmada a abertura da pagina atraves do titulo \"([^\"]*)\"$")
-	public void acesso(String texto) throws Exception {
-		try {
-			// Testando Acesso a Página pelo título
-			Assert.assertEquals(driver.getTitle(), texto);
-
-		} catch (Exception e) {
-			System.out.println("Erro - " + e.getMessage());
-			fail();
-			driver.close();
-		} catch (AssertionError e) {
-			System.out.println("Erro - " + e.getMessage());
-			fail();
-			driver.close();
-		}
-	}
-
 	@Dado("^preencher cnpj\"([^\"]*)\"$")
-	public void InserirCPNJ(String cnpj) {
+	public void InserirCPNJ(String cnpj) throws InterruptedException {
 		try {
-			// Esperando carregar input
-			WebDriverWait wait = new WebDriverWait(driver, 10);
-			WebElement campoCNPJ = wait.until(ExpectedConditions.presenceOfElementLocated(By.id(idCampoCNPJ)));
+			login();
 
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebElement btn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(idBtnProposta)));
+
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			executor.executeScript("arguments[0].click();", btn);
+
+			WebElement campoCNPJ = wait.until(ExpectedConditions.presenceOfElementLocated(By.id(idCampoCNPJ)));
 			campoCNPJ.sendKeys(cnpj);
 
 		} catch (Exception e) {
